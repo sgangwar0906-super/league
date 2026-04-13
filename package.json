@@ -1,0 +1,11 @@
+{
+  "name": "adpl-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "vercel-build": "node -e \"console.log('Static frontend with Vercel serverless API ready')\""
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  }
+}
