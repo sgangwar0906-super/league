@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>ADPL · Player Profiles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300..800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-image: url('bg.png'); background-size: cover; background-attachment: fixed; }
+    .players-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.8rem; margin: 2rem 0; }
+    .player-card { background: var(--surface-glass); backdrop-filter: blur(16px); border-radius: 1.8rem; padding: 1.2rem; text-align: center; cursor: pointer; border: 2px solid transparent; min-height: 170px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .player-card:hover { border-color: var(--accent-gold); background: var(--hover-bg); }
+    .player-card.active { border-color: var(--accent-gold); background: var(--hover-bg); }
+    .player-card-img { width: 95px; height: 95px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 2px solid var(--accent-gold); background: #2a2a2a; }
+    .player-card-name { font-weight: 700; font-size: 1rem; color: var(--text-primary); }
+    .selected-player-header { display: flex; align-items: center; gap: 1.8rem; margin-bottom: 2rem; flex-wrap: wrap; background: var(--surface-glass); backdrop-filter: blur(12px); border-radius: 2rem; padding: 1.2rem; }
+    .selected-photo { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-gold); }
+    .data-table { table-layout: fixed; width: 100%; }
+    @media (max-width: 640px) { .players-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; } .player-card-img { width: 75px; height: 75px; } .player-card { min-height: 150px; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><span class="logo-icon">🏏</span> ADPL·2026</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">🏠 Leaderboard</a>
+      <a href="pp.html" class="nav-link active">👤 Player Profiles</a>
+      <a href="pw.html" class="nav-link">🏆 Previous Winners</a>
+      <a href="more.html" class="nav-link">📖 More</a>
+      <a href="rules.html" class="nav-link">📜 Rules</a>
+      <select id="themeSelector" class="theme-selector">
+  <option value="green-silver">🌿 Green-Silver</option>
+  <option value="red-gold">🔥 Red-Gold</option>
+  <option value="blue-black">💙 Blue-Black</option>
+</select>
+    </div>
+  </nav>
+
+  <main class="main-container">
+    <h1 class="section-title" style="text-align:center;">👥 Select a Player</h1>
+    <div id="playersGrid" class="players-grid"><div class="loader">Loading players...</div></div>
+    <div id="selectedPlayerSection" style="display: none;">
+      <div class="selected-player-header">
+        <img id="selectedPhoto" class="selected-photo" src="images/default.jpg" alt="">
+        <h2 id="selectedPlayerName" class="player-name-glow" style="font-size: 1.8rem;"></h2>
+      </div>
+      <div class="data-table-wrapper"><div class="section-title-small">📊 SEASON PREDICTIONS</div><div class="table-responsive-mini"><table id="seasonTable" class="data-table"><thead><tr><th style="width:8%">Orange1</th><th style="width:8%">Orange2</th><th style="width:8%">Orange3</th><th style="width:8%">Purple1</th><th style="width:8%">Purple2</th><th style="width:8%">Purple3</th><th style="width:10%">Winner</th><th style="width:7%">PO1</th><th style="width:7%">PO2</th><th style="width:7%">PO3</th><th style="width:7%">PO4</th><th style="width:8%">POTT1</th><th style="width:8%">POTT2</th><th style="width:8%">POTT3</th></tr></thead><tbody><tr><td colspan="14" class="loader">Select a player</td></tr></tbody></table></div></div>
+      <div class="data-table-wrapper"><div class="section-title-small">⚡ MATCH PREDICTIONS</div><div class="table-responsive-mini"><table id="matchTable" class="data-table"><thead><tr><th style="width:20%">Match</th><th style="width:15%">Winner Prediction</th><th style="width:10%">Correct</th><th style="width:10%">Points</th><th style="width:20%">MOTM Prediction</th><th style="width:10%">Correct</th><th style="width:15%">Points</th></tr></thead><tbody><tr><td colspan="7" class="loader">Select a player</td></tr></tbody></table></div></div>
+    </div>
+    <div class="info-note">💡 Click any player to see their predictions. Points update after each match.</div>
+  </main>
+   <footer class="footer">
+    <div class="footer-content"><span>⚡ Official Partner:</span><a href="https://chat.whatsapp.com/GcFsctnWN2iB9OV8GofVut?mode=gi_t" target="_blank" class="footer-link"><img src="footer.png" alt="Join ADPL Community"></a></div>
+    <div class="footer-copyright">© ADPL 2026</div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
